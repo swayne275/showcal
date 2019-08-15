@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import "./Show.css"
 
@@ -6,16 +6,16 @@ function Show(props) {
     return (
         <div className="show">
             <name>{props.name}</name>
-            <type>Show still running: {props.running}</type>
-            <content>Runtime: {props.runtime} mins, ID: {props.id}</content>
+            <running>Show still running: {props.running}</running>
+            <info>Runtime: {props.runtime} mins, ID: {props.id}</info>
         </div>
     )
 }
 
 Show.propTypes = {
     name: PropTypes.string.isRequired,
-    runtime: PropsTypes.number.isRequired,
-    runtime: PropTypes.bool.isRequired,
+    runtime: PropTypes.number.isRequired,
+    running: PropTypes.bool.isRequired,
     id: PropTypes.number.isRequired,
 };
 
