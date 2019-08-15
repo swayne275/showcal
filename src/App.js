@@ -17,7 +17,7 @@ class App extends Component {
       .get('http://localhost:8080/api/v1/showsearch',
       {
         params: {
-          query: 'the 100'
+          query: 'The 100'
         }
       })
       .then(response => {
