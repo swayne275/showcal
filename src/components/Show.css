@@ -1,0 +1,27 @@
+.show {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #bbb;
+    background-color: #eee;
+}
+
+.show name {
+    font-size: 2em;
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+.show type {
+    font-size: 1.2em;
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+.show content {
+    font-size: 0.8em;
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
