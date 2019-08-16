@@ -59,6 +59,10 @@ class App extends Component {
       });
   }
 
+  componentDidUpdate() {
+    console.log("Component did update")
+  }
+
   render() {
     return (
       <div className="App">
@@ -81,3 +85,8 @@ class App extends Component {
 }
 
 export default App;
+
+/*
+TODO need to get results of search bar and feed into the
+axios request
+*/
