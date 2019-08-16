@@ -12,14 +12,14 @@
     display: block;
 }
 
-.show type {
+.show running {
     font-size: 1.2em;
     text-decoration: none;
     color: #333;
     display: block;
 }
 
-.show content {
+.show info {
     font-size: 0.8em;
     text-decoration: none;
     color: #333;

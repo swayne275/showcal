@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import ShowList from "./components/ShowList";
+import AutocompleteSearch from "./components/AutocompleteSearch";
 
 class App extends Component {
 
@@ -66,6 +67,13 @@ class App extends Component {
           <h1 className="App-title">Welcome to showCal!</h1>
         </header>
 
+        <AutocompleteSearch
+          options={[
+            'The 100',
+            'American Dad',
+            'Friends'
+          ]}
+        />
         <ShowList shows={this.state.shows} />
       </div>
     );
