@@ -27,24 +27,22 @@ class App extends Component {
 
   send(event) {
     if (event.keyCode === 13) {
-      // Send the search if user hits enter
-      console.log(event.target.value);
+      const query = event.target.value;
+      event.target.value = "";
 
-      getMatchingShows(event.target.value)
+      getMatchingShows(query)
       .then(formattedShows => {
         this.setState({
           shows: formattedShows
         });
       })
       .catch(emptyShowList => {
-        console.log("Error getting matching shows")
+        console.log("Error getting matching shows for:", query)
 
         this.setState({
           shows: emptyShowList
         });
       })
-
-      event.target.value = "";
     }
   }
 
