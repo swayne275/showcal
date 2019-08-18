@@ -4,12 +4,18 @@ import "./Show.css"
 
 function Show(props) {
     return (
-        <div className="show">
+        <div className="Show">
             <name>{props.name}</name>
-            <running>Show still running: {props.running}</running>
+            <running>{getRunningStr(props.running)}</running>
             <info>Runtime: {props.runtime} mins, ID: {props.id}</info>
         </div>
     )
+}
+
+function getRunningStr(running) {
+    return (
+        running ? 'Still running' : 'No upcoming episodes'
+    );
 }
 
 Show.propTypes = {
