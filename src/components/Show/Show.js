@@ -4,7 +4,7 @@ import "./Show.css"
 
 function Show(props) {
     return (
-        <div className="show">
+        <div className="Show">
             <name>{props.name}</name>
             <running>{getRunningStr(props.running)}</running>
             <info>Runtime: {props.runtime} mins, ID: {props.id}</info>

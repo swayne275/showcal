@@ -9,11 +9,14 @@ import ShowList from './components/ShowList';
 import ShowSearch from './components/ShowSearch/ShowSearch';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      shows: []
+    };
 
-  // default State object
-  state = {
-    shows: []
-  };
+    this.send = this.send.bind(this)
+  }
 
   componentDidMount() {
     axios
@@ -43,11 +46,10 @@ class App extends Component {
           });
         }
 
-        const newState = Object.assign({}, this.state, {
+        this.setState({
           shows: formattedShows
-        });
+        })
 
-        this.setState(newState);
         console.log(data)
       })
       .catch(error => {
@@ -69,7 +71,21 @@ class App extends Component {
     if (event.keyCode === 13) {
       // Send the search if user hits enter
       console.log(event.target.value);
-      getMatchingShows(event.target.value);
+
+      getMatchingShows(event.target.value)
+      .then(formattedShows => {
+        this.setState({
+          shows: formattedShows
+        });
+      })
+      .catch(emptyShowList => {
+        console.log("Error getting matching shows")
+
+        this.setState({
+          shows: emptyShowList
+        });
+      })
+
       event.target.value = "";
     }
   }
