@@ -1,6 +1,6 @@
 import React from "react";
 
-import Show from "./Show";
+import Show from "./Show/Show";
 
 function ShowList(props) {
     return (
