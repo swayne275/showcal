@@ -17,18 +17,24 @@ let getMatchingShows = (query) => {
             const formattedShows = [];
 
             if (data.shows) {
-                console.log("Show data: ", data.shows)
-
                 const shows = data.shows;
                 Object.keys(shows).forEach(function(key) {
                     let show = shows[key];
-                    if (show.name && show.id && show.runtime && show.status) {
-                        formattedShows.push({
-                            name: show.name,
-                            runtime: show.runtime,
-                            running: show.status,
-                            id: show.id,
-                        });
+                    if (('name' in show) &&
+                        ('id' in show) &&
+                        ('runtime' in show) &&
+                        ('status' in show)) {
+                        if (show.status === true) {
+                            // only display shows still known to be running
+                            formattedShows.push({
+                                name: show.name,
+                                runtime: show.runtime,
+                                running: show.status,
+                                id: show.id,
+                            });
+                        }
+                    } else {
+                        console.log("Show missing required parameters:", show)
                     }
                 });
             }
