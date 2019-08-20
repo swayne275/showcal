@@ -1,21 +1,23 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "./Show.css"
 
-function Show(props) {
-    return (
-        <div className="Show">
-            <name>{props.name}</name>
-            <running>{getRunningStr(props.running)}</running>
-            <info>Runtime: {props.runtime} mins, ID: {props.id}</info>
-        </div>
-    )
-}
+class Show extends Component {
+    getRunningStr(running) {
+        return (
+            running ? 'Still running' : 'No upcoming episodes'
+        );
+    }
 
-function getRunningStr(running) {
-    return (
-        running ? 'Still running' : 'No upcoming episodes'
-    );
+    render() {
+        return (
+            <div className="Show">
+                <name>{this.props.name}</name>
+                <running>{this.getRunningStr(this.props.running)}</running>
+                <info>Runtime: {this.props.runtime} mins, ID: {this.props.id}</info>
+            </div>
+        );
+    }
 }
 
 Show.propTypes = {

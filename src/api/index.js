@@ -2,6 +2,7 @@ import axios from "axios";
 
 var showSearchURL = 'http://localhost:8080/api/v1/showsearch';
 
+// TODO should reject return error instead of empty list?
 let getMatchingShows = (query) => {
     console.log("Getting matching shows for query:", query);
 
