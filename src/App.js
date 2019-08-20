@@ -15,15 +15,7 @@ class App extends Component {
     };
 
     this.send = this.send.bind(this)
-  }
-
-  componentDidMount() {
-    // do nothing
-  }
-
-  componentDidUpdate() {
-    // do nothing
-  }
+  };
 
   send(event) {
     if (event.keyCode === 13) {
