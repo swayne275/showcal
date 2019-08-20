@@ -17,7 +17,7 @@ class Show extends Component {
         <info>Runtime: {this.props.runtime} mins, ID: {this.props.id}</info>
       </div>
     );
-    }
+  }
 }
 
 Show.propTypes = {
