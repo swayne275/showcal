@@ -10,21 +10,19 @@ class Show extends Component {
   }
 
   render() {
+    const {name, id, running, runtime} = this.props.show
     return (
       <div className="Show">
-        <name>{this.props.name}</name>
-        <running>{this.getRunningStr(this.props.running)}</running>
-        <info>Runtime: {this.props.runtime} mins, ID: {this.props.id}</info>
+        <name>{name}</name>
+        <running>{this.getRunningStr(running)}</running>
+        <info>Runtime: {runtime} mins, ID: {id}</info>
       </div>
     );
   }
 }
 
 Show.propTypes = {
-  name: PropTypes.string.isRequired,
-  runtime: PropTypes.number.isRequired,
-  running: PropTypes.bool.isRequired,
-  id: PropTypes.number.isRequired,
+  show: PropTypes.object.isRequired,
 };
 
 export default Show;
