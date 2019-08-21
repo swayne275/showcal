@@ -1,56 +1,53 @@
 import axios from "axios";
 
-var showSearchURL = 'http://localhost:8080/api/v1/showsearch';
+const API_URL = 'http://localhost:8080'
+const API_VERSION = 'v1'
+const SHOW_SEARCH_URL = `${API_URL}/api/${API_VERSION}/showsearch`;
 
-// TODO should reject return error instead of empty list?
-let getMatchingShows = (query) => {
+const getMatchingShows = async (query) => {
     console.log("Getting matching shows for query:", query);
 
-    return new Promise((resolve, reject) => {
-        axios.get(showSearchURL,
+    try {
+        const response = await axios.get(SHOW_SEARCH_URL,
             {
                 params: {
                     query: query
                 }
-            })
-        .then(response => {
-            const data = response.data;
-            const formattedShows = [];
+            }
+        )
 
-            if (data.shows) {
-                const shows = data.shows;
-                Object.keys(shows).forEach(function(key) {
-                    let show = shows[key];
-                    if (('name' in show) &&
-                        ('id' in show) &&
-                        ('runtime' in show) &&
-                        ('status' in show)) {
-                        if (show.status === true) {
-                            // only display shows still known to be running
-                            formattedShows.push({
-                                name: show.name,
-                                runtime: show.runtime,
-                                running: show.status,
-                                id: show.id,
-                            });
-                        }
-                    } else {
-                        console.log("Show missing required parameters:", show)
+        const data = response.data;
+        const formattedShows = [];
+
+        if (data.shows) {
+            const {shows} = data;
+            Object.keys(shows).forEach((key) => {
+                let show = shows[key];
+                if (('name' in show) &&
+                    ('id' in show) &&
+                    ('runtime' in show) &&
+                    ('status' in show)) {
+                    if (show.status === true) {
+                        // only display shows still known to be running
+                        formattedShows.push(show);
                     }
-                });
-            }
+                } else {
+                    console.log("Show missing required parameters:", show)
+                }
+            });
+        }
 
-            resolve(formattedShows);
-        }, (error) => {
-            console.log('Network request failed: ', error);
-            if (error.response) {
-                console.log("data: ", error.response.data)
-                console.log("status: ", error.response.status)
-                console.log("headers: ", error.response.headers)
-            }
-            reject([])
-        })
-    });
+        return formattedShows;
+    }
+    catch (error) {
+        console.log('Network request failed: ', error);
+        if (error.response) {
+            console.log("data: ", error.response.data)
+            console.log("status: ", error.response.status)
+            console.log("headers: ", error.response.headers)
+        }
+        return []
+    }
 }
 
 export { getMatchingShows }

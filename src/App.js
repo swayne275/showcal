@@ -7,20 +7,19 @@ import Header from './components/Header/Header';
 import ShowList from './components/ShowList';
 import ShowSearch from './components/ShowSearch/ShowSearch';
 
+const KEY_ENTER = 13
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       shows: []
     };
-
-    this.send = this.send.bind(this)
   };
 
-  send(event) {
-    if (event.keyCode === 13) {
+  send = (event) => {
+    if (event.keyCode === KEY_ENTER) {
       const query = event.target.value;
-      event.target.value = "";
 
       getMatchingShows(query)
       .then(formattedShows => {
