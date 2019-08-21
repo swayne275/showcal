@@ -1,6 +1,6 @@
 import React from "react";
 // TODO make these into tiles instead of just bars/rows
-import Show from "./Show/Show";
+import Show from "./Show";
 
 function ShowList(props) {
   return (
