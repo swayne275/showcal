@@ -25,7 +25,6 @@ const getMatchingShows = async (query) => {
                 let show = shows[key];
                 if (('name' in show) &&
                     ('id' in show) &&
-                    ('runtime' in show) &&
                     ('status' in show)) {
                     if (show.status === true) {
                         // only display shows still known to be running

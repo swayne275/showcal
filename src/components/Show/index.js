@@ -15,7 +15,7 @@ class Show extends Component {
       <div className="Show">
         <name>{name}</name>
         <running>{this.getRunningStr(running)}</running>
-        <info>Runtime: {runtime} mins, ID: {id}</info>
+        <info>ID: {id}</info>
       </div>
     );
   }
