@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
 
@@ -8,6 +9,19 @@ import ShowList from './components/ShowList';
 import ShowSearch from './components/ShowSearch/ShowSearch';
 
 const KEY_ENTER = 13
+
+class EpisodeDetails extends Component {
+  render() {
+    // match is the url i'm on, from react router
+    const {match} = this.props;
+    const {episodeID} = match.params
+    return (
+      <div>
+        {episodeID}
+      </div>
+    )
+  }
+}
 
 class App extends Component {
   constructor(props) {
@@ -37,7 +51,25 @@ class App extends Component {
     }
   }
 
+  renderHomepage = () => {
+    return (
+      <div>
+        <ShowSearch send={this.send} />
+        <ShowList shows={this.state.shows} />
+      </div>
+    )
+  }
+
+  renderTest = () => {
+    return (
+      <div>
+        <p>"testing"</p>
+      </div>
+    )
+  }
+
   render() {
+    // TODO remove comment: :episodeID in route means i want episodeID as a parameter
     return (
       <div className="App">
         <Header />
@@ -45,8 +77,11 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to showCal!</h1>
         </header>
-        <ShowSearch send={this.send} />
-        <ShowList shows={this.state.shows} />
+        <Router>
+          <Route path="/" exact component={this.renderHomepage} />
+          <Route path="/test" exact component={this.renderTest} />
+          <Route path="/episode/:episodeID" exact component={EpisodeDetails} />
+        </Router>
       </div>
     );
   }
