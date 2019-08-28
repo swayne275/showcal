@@ -23,6 +23,8 @@ class EpisodeDetails extends Component {
   }
 }
 
+
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -78,9 +80,18 @@ class App extends Component {
           <h1 className="App-title">Welcome to showCal!</h1>
         </header>
         <Router>
-          <Route path="/" exact component={this.renderHomepage} />
-          <Route path="/test" exact component={this.renderTest} />
-          <Route path="/episode/:episodeID" exact component={EpisodeDetails} />
+          <Route
+            path="/"
+            exact component={this.renderHomepage}
+          />
+          <Route
+            path="/test"
+            exact component={this.renderTest}
+          />
+          <Route
+            path="/show/:showID"
+            exact component={EpisodeDetails}
+          />
         </Router>
       </div>
     );
